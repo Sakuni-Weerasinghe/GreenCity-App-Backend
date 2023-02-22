@@ -1,10 +1,16 @@
 package com.greencity.app.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -49,8 +55,33 @@ public class CollectionCenter {
 	private String addressLine3;
 	@NotEmpty
 	@Column
+	private String location;
+	@NotEmpty
+	@Column
+	private String description;
+	@NotEmpty
+	@Column
+	private String waste_type;
+	@NotEmpty
+	@Column
+	private int payment;
+	@NotEmpty
+	@Column
+	private boolean moreDetailStatus;
+	@NotEmpty
+	@Column
+	private boolean active_or_disable;
+	@NotEmpty
+	@Column
 	private boolean accountStatus;
 
+	/////////////////////////// Relationships //////////////////////////////////
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "collectionCenter", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<CollectionCenter_WorkingDays> collectionCenter_WorkingDays;
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	
 	public int getCenterId() {
 		return centerId;
 	}
@@ -123,6 +154,54 @@ public class CollectionCenter {
 		this.addressLine3 = addressLine3;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getWaste_type() {
+		return waste_type;
+	}
+
+	public void setWaste_type(String waste_type) {
+		this.waste_type = waste_type;
+	}
+
+	public int getPayment() {
+		return payment;
+	}
+
+	public void setPayment(int payment) {
+		this.payment = payment;
+	}
+
+	public boolean isMoreDetailStatus() {
+		return moreDetailStatus;
+	}
+
+	public void setMoreDetailStatus(boolean moreDetailStatus) {
+		this.moreDetailStatus = moreDetailStatus;
+	}
+
+	public boolean isActive_or_disable() {
+		return active_or_disable;
+	}
+
+	public void setActive_or_disable(boolean active_or_disable) {
+		this.active_or_disable = active_or_disable;
+	}
+
 	public boolean isAccountStatus() {
 		return accountStatus;
 	}
@@ -130,4 +209,22 @@ public class CollectionCenter {
 	public void setAccountStatus(boolean accountStatus) {
 		this.accountStatus = accountStatus;
 	}
+
+	public List<CollectionCenter_WorkingDays> getCollectionCenter_WorkingDays() {
+		return collectionCenter_WorkingDays;
+	}
+
+	public void setCollectionCenter_WorkingDays(List<CollectionCenter_WorkingDays> collectionCenter_WorkingDays) {
+		this.collectionCenter_WorkingDays = collectionCenter_WorkingDays;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////
+
+
+	
+	
+
+
+	
+	
 }

@@ -41,6 +41,7 @@ public class Security extends WebSecurityConfigurerAdapter {
 		httpSecurity.cors();
 		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/auth/**").permitAll();
 
+//		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/profile/collectionCenter/**").permitAll();
 		httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 

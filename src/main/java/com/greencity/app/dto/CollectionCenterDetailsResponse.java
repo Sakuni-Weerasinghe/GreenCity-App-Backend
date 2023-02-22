@@ -1,23 +1,20 @@
 package com.greencity.app.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Setter;
-
-@Data
-@Setter
-@AllArgsConstructor
-public class CollectionCenterRegisterRequest {
+public class CollectionCenterDetailsResponse {
 	private String username;
 	private String centerName;
-	private String password;
-	private String confirmPassword;
 	private int contactNumber;
 	private String email;
 	private String addressLine1;
 	private String addressLine2;
 	private String addressLine3;
 	private String location;
+	private String wastetype;
+	private int payment;
+	private String description;
+//	private List<String> workingDays;
+	private boolean moreDetailStatus;
+	private boolean status;
 
 	public String getUsername() {
 		return username;
@@ -33,22 +30,6 @@ public class CollectionCenterRegisterRequest {
 
 	public void setCenterName(String centerName) {
 		this.centerName = centerName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
 	}
 
 	public int getContactNumber() {
@@ -90,13 +71,53 @@ public class CollectionCenterRegisterRequest {
 	public void setAddressLine3(String addressLine3) {
 		this.addressLine3 = addressLine3;
 	}
-	
+
 	public String getLocation() {
 		return location;
 	}
 
 	public void setLocation(String location) {
 		this.location = location;
+	}
+
+	public String getWastetype() {
+		return wastetype;
+	}
+
+	public void setWastetype(String wastetype) {
+		this.wastetype = wastetype;
+	}
+
+	public int getPayment() {
+		return payment;
+	}
+
+	public void setPayment(int payment) {
+		this.payment = payment;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean getMoreDetailStatus() {
+		return moreDetailStatus;
+	}
+
+	public void setMoreDetailStatus(boolean moreDetailStatus) {
+		this.moreDetailStatus = moreDetailStatus;
+	}
+
+	public boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
 }

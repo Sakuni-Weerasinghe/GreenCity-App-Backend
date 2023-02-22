@@ -12,23 +12,24 @@ import lombok.Setter;
 @AllArgsConstructor
 @Component
 @Scope()
-public class CommonResponse {
-	private String responseBody;
-	private boolean responseStatus;
+public class CommonResponse<T> {
+	private boolean status;
+	private T response;
 
-	public String getResponseBody() {
-		return responseBody;
+	public boolean isStatus() {
+		return status;
 	}
 
-	public void setResponseBody(String responseBody) {
-		this.responseBody = responseBody;
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 
-	public boolean isResponseStatus() {
-		return responseStatus;
+	public T getResponse() {
+		return response;
 	}
 
-	public void setResponseStatus(boolean responseStatus) {
-		this.responseStatus = responseStatus;
+	public void setResponse(T response) {
+		this.response = response;
 	}
+
 }
