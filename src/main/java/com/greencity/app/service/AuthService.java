@@ -38,9 +38,9 @@ public class AuthService {
 	private JwtProvider jwtProvider;
 
 	@Autowired
-	private CommonResponse response;
+	private CommonResponse<String> response;
 
-	public CommonResponse userRegister(UserRegisterRequest registerRequest) {
+	public CommonResponse<String> userRegister(UserRegisterRequest registerRequest) {
 
 		if (registerRequest != null) {
 
@@ -59,48 +59,48 @@ public class AuthService {
 					|| (checkCollectionCenterByUsername != null && checkCollectionCenterByEmail != null
 							&& checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given username, email and mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username, email and mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByUsername != null && checkUserByEmail != null)
 					|| (checkCollectionCenterByUsername != null && checkCollectionCenterByEmail != null)) {
 
-				response.setResponseBody("Given username and email maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username and email maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByUsername != null && checkUserByMobileNumber != null)
 					|| (checkCollectionCenterByUsername != null && checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given username and mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username and mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByEmail != null && checkUserByMobileNumber != null)
 					|| (checkCollectionCenterByEmail != null && checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given email and mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given email and mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 			}
 
 			else if ((checkUserByUsername != null) || (checkCollectionCenterByUsername != null)) {
 
-				response.setResponseBody("Given username maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByEmail != null) || (checkCollectionCenterByEmail != null)) {
 
-				response.setResponseBody("Given email maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given email maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByMobileNumber != null) || (checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else {
@@ -115,13 +115,14 @@ public class AuthService {
 				user.setAddressLine1(registerRequest.getAddressLine1());
 				user.setAddressLine2(registerRequest.getAddressLine2());
 				user.setAddressLine3(registerRequest.getAddressLine3());
+				user.setActive_or_disable(true);
 				user.setAccountStatus(true);
 				user.setAdmin(false);
 
 				if (!registerRequest.getPassword().equals(registerRequest.getConfirmPassword())) {
 
-					response.setResponseBody("Password and Confirm Password does not match, Registration failed!");
-					response.setResponseStatus(false);
+					response.setResponse("Password and Confirm Password does not match, Registration failed!");
+					response.setStatus(false);
 
 					return response;
 
@@ -129,8 +130,8 @@ public class AuthService {
 					user.setPassword(encodePassword(registerRequest.getPassword()));
 					userRepository.save(user);
 
-					response.setResponseBody("Registration Completed!");
-					response.setResponseStatus(true);
+					response.setResponse("Registration Completed!");
+					response.setStatus(true);
 
 					return response;
 				}
@@ -138,14 +139,14 @@ public class AuthService {
 		}
 
 		else {
-			response.setResponseBody("Registration Failed!");
-			response.setResponseStatus(false);
+			response.setResponse("Registration Failed!");
+			response.setStatus(false);
 
 			return response;
 		}
 	}
 
-	public CommonResponse collectionCenterRegister(CollectionCenterRegisterRequest registerRequest) {
+	public CommonResponse<String> collectionCenterRegister(CollectionCenterRegisterRequest registerRequest) {
 
 		if (registerRequest != null) {
 
@@ -164,48 +165,48 @@ public class AuthService {
 					|| (checkCollectionCenterByUsername != null && checkCollectionCenterByEmail != null
 							&& checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given username, email and mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username, email and mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByUsername != null && checkUserByEmail != null)
 					|| (checkCollectionCenterByUsername != null && checkCollectionCenterByEmail != null)) {
 
-				response.setResponseBody("Given username and email maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username and email maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByUsername != null && checkUserByMobileNumber != null)
 					|| (checkCollectionCenterByUsername != null && checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given username and mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username and mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByEmail != null && checkUserByMobileNumber != null)
 					|| (checkCollectionCenterByEmail != null && checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given email and mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given email and mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 			}
 
 			else if ((checkUserByUsername != null) || (checkCollectionCenterByUsername != null)) {
 
-				response.setResponseBody("Given username maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given username maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByEmail != null) || (checkCollectionCenterByEmail != null)) {
 
-				response.setResponseBody("Given email maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given email maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else if ((checkUserByMobileNumber != null) || (checkCollectionCenterByMobileNumber != null)) {
 
-				response.setResponseBody("Given mobile number maybe exist, Registration failed!");
-				response.setResponseStatus(false);
+				response.setResponse("Given mobile number maybe exist, Registration failed!");
+				response.setStatus(false);
 				return response;
 
 			} else {
@@ -219,20 +220,23 @@ public class AuthService {
 				collectionCenter.setAddressLine1(registerRequest.getAddressLine1());
 				collectionCenter.setAddressLine2(registerRequest.getAddressLine2());
 				collectionCenter.setAddressLine3(registerRequest.getAddressLine3());
+				collectionCenter.setLocation(registerRequest.getLocation());
+				collectionCenter.setMoreDetailStatus(false);
+				collectionCenter.setActive_or_disable(true);
 				collectionCenter.setAccountStatus(true);
 
 				if (!registerRequest.getPassword().equals(registerRequest.getConfirmPassword())) {
 
-					response.setResponseBody("Password and Confirm Password does not match, Registration failed!");
-					response.setResponseStatus(false);
+					response.setResponse("Password and Confirm Password does not match, Registration failed!");
+					response.setStatus(false);
 					return response;
 
 				} else {
 					collectionCenter.setPassword(encodePassword(registerRequest.getPassword()));
 					collectionCenterRepository.save(collectionCenter);
 
-					response.setResponseBody("Registration Completed!");
-					response.setResponseStatus(true);
+					response.setResponse("Registration Completed!");
+					response.setStatus(true);
 
 					return response;
 				}
@@ -240,8 +244,8 @@ public class AuthService {
 		}
 
 		else {
-			response.setResponseBody("Registration Failed!");
-			response.setResponseStatus(false);
+			response.setResponse("Registration Failed!");
+			response.setStatus(false);
 
 			return response;
 		}
@@ -263,7 +267,7 @@ public class AuthService {
 		loginResponse.setAuthenticationtoken(jwtProvider.generateToken(authenticate));
 		loginResponse.setUsername(loginRequest.getUsername());
 		loginResponse.setUserRole(this.getUserRole(loginRequest.getUsername()));
-		
+
 		return loginResponse;
 	}
 

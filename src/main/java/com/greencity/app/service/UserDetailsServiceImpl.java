@@ -28,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		User user = userRepository.findByUsername(username);
 		CollectionCenter collectionCenter = collectionCenterRepository.findByUsername(username);
 		UserDetail usedetail = new UserDetail();
@@ -36,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		if (user != null) {
 			usedetail.setUsername(user.getUsername());
 			usedetail.setPassword(user.getPassword());
-			usedetail.setIsActive(user.isAccountStatus());
+			usedetail.setStatus(user.isAccountStatus());
 
 			if (user.isAdmin()) {
 				usedetail.setUserRole("ADMIN");
@@ -48,12 +48,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		if (collectionCenter != null) {
 			usedetail.setUsername(collectionCenter.getUsername());
 			usedetail.setPassword(collectionCenter.getPassword());
-			usedetail.setIsActive(collectionCenter.isAccountStatus());
+			usedetail.setStatus(collectionCenter.isAccountStatus());
 			usedetail.setUserRole("COLLECTION_CENTER");
 		}
 
 		return new org.springframework.security.core.userdetails.User(usedetail.getUsername(), usedetail.getPassword(),
-				true, true, true, user.isAccountStatus(), getAuthorities("ROLE_" + usedetail.getUserRole()));
+				true, true, true, usedetail.getStatus(), getAuthorities("ROLE_" + usedetail.getUserRole()));
 	}
 
 	private Collection<? extends GrantedAuthority> getAuthorities(String role_user) {

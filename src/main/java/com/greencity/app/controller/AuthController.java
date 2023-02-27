@@ -23,22 +23,20 @@ public class AuthController {
 	private AuthService authService;
 
 	@PostMapping("userRegister")
-	public ResponseEntity<CommonResponse> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
+	public ResponseEntity<CommonResponse<String>> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
 
 		return new ResponseEntity<>(authService.userRegister(userRegisterRequest), HttpStatus.OK);
 	}
 
 	@PostMapping("collectionCenterRegister")
-	public ResponseEntity<CommonResponse> collectionCenterRegister(
+	public ResponseEntity<CommonResponse<String>> collectionCenterRegister(
 			@RequestBody CollectionCenterRegisterRequest collectionCenterRegisterRequest) {
 
-		return new ResponseEntity<>(authService.collectionCenterRegister(collectionCenterRegisterRequest),
-				HttpStatus.OK);
+		return new ResponseEntity<>(authService.collectionCenterRegister(collectionCenterRegisterRequest),HttpStatus.OK);
 	}
 
 	@PostMapping("login")
 	public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
-
 		return new ResponseEntity<>(authService.login(loginRequest), HttpStatus.OK);
 	}
 

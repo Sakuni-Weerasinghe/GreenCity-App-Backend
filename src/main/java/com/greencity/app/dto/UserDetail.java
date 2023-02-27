@@ -12,7 +12,7 @@ public class UserDetail {
 	private String username;
 	private String password;
 	private String userRole;
-	private Boolean isActive;
+	private Boolean status;
 
 	public String getUsername() {
 		return username;
@@ -38,12 +38,12 @@ public class UserDetail {
 		this.userRole = userRole;
 	}
 
-	public Boolean getIsActive() {
-		return isActive;
+	public Boolean getStatus() {
+		return status;
 	}
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 }
