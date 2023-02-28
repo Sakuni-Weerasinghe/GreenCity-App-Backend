@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.greencity.app.dto.CollectionCenterDetailsResponse;
 import com.greencity.app.dto.CommonResponse;
+import com.greencity.app.dto.ProfileDetailsRequest;
 import com.greencity.app.entity.CollectionCenter;
 import com.greencity.app.repository.CollectionCenterRepository;
 
@@ -56,4 +57,32 @@ public class PublicService {
 		commonResponse.setStatus(true);
 		return commonResponse;
 	}
+
+
+public CollectionCenterDetailsResponse getCollectionCenterDetails(ProfileDetailsRequest profileDetailsRequest) {
+	if (profileDetailsRequest != null && profileDetailsRequest.getRole().equals("COLLECTION_CENTER")) {
+		CollectionCenter collectionCenter = collectionCenterRepository
+				.findByUsername(profileDetailsRequest.getUsername());
+		if (collectionCenter != null) {
+			CollectionCenterDetailsResponse collectionCenterDetailsResponse = new CollectionCenterDetailsResponse();
+			collectionCenterDetailsResponse.setUsername(collectionCenter.getUsername());
+			collectionCenterDetailsResponse.setCenterName(collectionCenter.getCentertName());
+			collectionCenterDetailsResponse.setEmail(collectionCenter.getEmail());
+			collectionCenterDetailsResponse.setContactNumber(collectionCenter.getContactNumber());
+			collectionCenterDetailsResponse.setAddressLine1(collectionCenter.getAddressLine1());
+			collectionCenterDetailsResponse.setAddressLine2(collectionCenter.getAddressLine2());
+			collectionCenterDetailsResponse.setAddressLine3(collectionCenter.getAddressLine3());
+			collectionCenterDetailsResponse.setLocation(collectionCenter.getLocation());
+			collectionCenterDetailsResponse.setWastetype(collectionCenter.getWaste_type());
+			collectionCenterDetailsResponse.setPayment(collectionCenter.getPayment());
+			collectionCenterDetailsResponse.setDescription(collectionCenter.getDescription());
+			collectionCenterDetailsResponse.setMoreDetailStatus(collectionCenter.isMoreDetailStatus());
+			collectionCenterDetailsResponse.setStatus(collectionCenter.isActive_or_disable());
+			return collectionCenterDetailsResponse;
+		}
+	}
+	return null;
 }
+
+}
+
