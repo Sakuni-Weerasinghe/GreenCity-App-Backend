@@ -80,6 +80,9 @@ public class CollectionCenter {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "collectionCenter", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CollectionCenter_WorkingDays> collectionCenter_WorkingDays;
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "collectionCenter", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Customer_Request> requests;
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	public int getCenterId() {

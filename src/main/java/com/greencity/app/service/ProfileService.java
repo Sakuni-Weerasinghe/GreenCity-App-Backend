@@ -58,6 +58,7 @@ public class ProfileService {
 					.findByUsername(profileDetailsRequest.getUsername());
 			if (collectionCenter != null) {
 				CollectionCenterDetailsResponse collectionCenterDetailsResponse = new CollectionCenterDetailsResponse();
+				collectionCenterDetailsResponse.setCenterId(collectionCenter.getCenterId());
 				collectionCenterDetailsResponse.setUsername(collectionCenter.getUsername());
 				collectionCenterDetailsResponse.setCenterName(collectionCenter.getCentertName());
 				collectionCenterDetailsResponse.setEmail(collectionCenter.getEmail());

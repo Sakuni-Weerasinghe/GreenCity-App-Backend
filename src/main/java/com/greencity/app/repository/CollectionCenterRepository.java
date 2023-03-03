@@ -11,5 +11,8 @@ public interface CollectionCenterRepository extends JpaRepository<CollectionCent
 	CollectionCenter findByEmail(String email);
 
 	CollectionCenter findByContactNumber(int contactNumber);
+	
+	CollectionCenter findByCenterId(int centerId);
 
 }
+;

@@ -1,6 +1,7 @@
 package com.greencity.app.dto;
 
 public class CollectionCenterDetailsResponse {
+	private  int centerId;
 	private String username;
 	private String centerName;
 	private int contactNumber;
@@ -15,6 +16,15 @@ public class CollectionCenterDetailsResponse {
 //	private List<String> workingDays;
 	private boolean moreDetailStatus;
 	private boolean status;
+	
+	
+	public int getCenterId() {
+		return centerId;
+	}
+
+	public void setCenterId(int centerId) {
+		this.centerId = centerId;
+	}
 
 	public String getUsername() {
 		return username;
