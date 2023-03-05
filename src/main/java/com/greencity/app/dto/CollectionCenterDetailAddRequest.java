@@ -1,15 +1,12 @@
 package com.greencity.app.dto;
 
-import java.util.List;
-
 public class CollectionCenterDetailAddRequest {
 	private String currentUserName;
 	private String wastetype;
 	private int payment;
 	private String description;
-//	private List<String> workingDays;
+	// private List<String> workingDays;
 
-	
 	public String getWastetype() {
 		return wastetype;
 	}
@@ -42,13 +39,12 @@ public class CollectionCenterDetailAddRequest {
 		this.description = description;
 	}
 
-//	public List<String> getWorkingDays() {
-//		return workingDays;
-//	}
-//
-//	public void setWorkingDays(List<String> workingDays) {
-//		this.workingDays = workingDays;
-//	}
-
+	// public List<String> getWorkingDays() {
+	// return workingDays;
+	// }
+	//
+	// public void setWorkingDays(List<String> workingDays) {
+	// this.workingDays = workingDays;
+	// }
 
 }

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.greencity.app.dto.CollectionCenterDetailsResponse;
 import com.greencity.app.dto.CommonResponse;
 import com.greencity.app.dto.ProfileDetailsRequest;
-import com.greencity.app.service.ProfileService;
 import com.greencity.app.service.PublicService;
 
 @RestController
@@ -30,15 +29,13 @@ public class PublicController {
 			@PathVariable int pageNumber, @PathVariable int pageSize) {
 		return new ResponseEntity<>(publicService.getAllCollectionCenters(pageNumber, pageSize), HttpStatus.OK);
 	}
-	
+
 	@PostMapping("collectionCenter")
 	public ResponseEntity<CollectionCenterDetailsResponse> getCollectionCenterDetails(
 			@RequestBody ProfileDetailsRequest profileDetailsReques) {
 		return new ResponseEntity<CollectionCenterDetailsResponse>(
-				publicService.getCollectionCenterDetails(profileDetailsReques), 
+				publicService.getCollectionCenterDetails(profileDetailsReques),
 				HttpStatus.OK);
 	}
-	
-	
-	
+
 }
