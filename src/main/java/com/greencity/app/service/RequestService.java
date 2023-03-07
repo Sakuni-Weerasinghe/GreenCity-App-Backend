@@ -26,18 +26,20 @@ public class RequestService {
 	@Autowired
 	private CommonResponse<String> commonResponse;
 
-	public CommonResponse<String> createRequest(RequestCreatingRequest requestCreatingRequest){
+	public CommonResponse<String> createRequest(RequestCreatingRequest requestCreatingRequest) {
 		if (requestCreatingRequest != null) {
 			User customer = userRepository.findByUsername(requestCreatingRequest.getCustomerUsername());
-			CollectionCenter collectionCenter = collectionCenterRepository.findByCenterId(requestCreatingRequest.getCollectionCenterId());
-			
-			if (collectionCenter != null && collectionCenter.isActive_or_disable()) {
+			CollectionCenter collectionCenter = collectionCenterRepository
+					.findByCenterId(requestCreatingRequest.getCollectionCenterId());
+
+			if (collectionCenter != null // && collectionCenter.isActive_or_disable()
+			) {
 				if (customer != null) {
 					Customer_Request newRequest = new Customer_Request();
-					
+
 					newRequest.setCollectionCenter(collectionCenter);
 					newRequest.setUser(customer);
-					//newRequest.setRequestStatus(requestStatus: "INPROGRESS");
+					// newRequest.setRequestStatus(requestStatus: "INPROGRESS");
 					newRequest.setCollectionAddressLine1(requestCreatingRequest.getCollectionAddressLine1());
 					newRequest.setCollectionAddressLine2(requestCreatingRequest.getCollectionAddressLine2());
 					newRequest.setCollectionAddressLine3(requestCreatingRequest.getCollectionAddressLine3());
@@ -46,30 +48,30 @@ public class RequestService {
 					newRequest.setQuantity(requestCreatingRequest.getQuantity());
 					newRequest.setTotalPayment(requestCreatingRequest.getTotalPayment());
 					newRequest.setCreatedDate(requestCreatingRequest.getCreatedDate());
-					
+
 					customer_RequestRepository.save(newRequest);
-					
+
 					commonResponse.setResponse("The request created successfully!");
 					commonResponse.setStatus(true);
-					
+
 					return commonResponse;
-				
-				}else {
+
+				} else {
 					commonResponse.setResponse("Customer validation is failed, order creating is failed!");
 					commonResponse.setStatus(false);
-					
+
 					return commonResponse;
 				}
-			}else {
+			} else {
 				commonResponse.setResponse("Shop does not exsit, order creating is failed!");
 				commonResponse.setStatus(false);
-				
+
 				return commonResponse;
 			}
-		}else {
+		} else {
 			commonResponse.setResponse("The user not found, Buyer request creating is failed!");
 			commonResponse.setStatus(false);
-			
+
 			return commonResponse;
 		}
 	}
