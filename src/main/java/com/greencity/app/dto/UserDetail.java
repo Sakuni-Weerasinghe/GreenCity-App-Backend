@@ -14,6 +14,9 @@ public class UserDetail {
 	private String userRole;
 	private Boolean status;
 
+	public UserDetail() {
+	}
+
 	public String getUsername() {
 		return username;
 	}

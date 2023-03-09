@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.greencity.app.dto.CollectionCenterDetailAddRequest;
 import com.greencity.app.dto.CollectionCenterDetailsResponse;
 import com.greencity.app.dto.CollectionCenterDetailsUpdateRequset;
-import com.greencity.app.dto.CollectionCenterFullDetailsUpdateRequset;
+import com.greencity.app.dto.CollectionCenterSettingsResponse;
+import com.greencity.app.dto.CollectionCenterSettingsUpdateRequset;
 import com.greencity.app.dto.CommonResponse;
-import com.greencity.app.dto.ProfileDetailsRequest;
-import com.greencity.app.dto.UserDetailsResponse;
-import com.greencity.app.dto.UserDetailsUpdateRequset;
+import com.greencity.app.dto.ProfileRequest;
+import com.greencity.app.dto.UserSettingsResponse;
+import com.greencity.app.dto.UserSettingsUpdateRequest;
 import com.greencity.app.service.ProfileService;
 
 @RestController
@@ -26,47 +26,34 @@ public class ProfileManagementController {
 	@Autowired
 	private ProfileService profileService;
 
-	@PostMapping("user")
-	public ResponseEntity<UserDetailsResponse> getUserDetails(
-			@RequestBody ProfileDetailsRequest profileDetailsReques) {
-		return new ResponseEntity<UserDetailsResponse>(profileService.getUserDetails(profileDetailsReques),
-				HttpStatus.OK);
+	@PostMapping("userSettings")
+	public ResponseEntity<UserSettingsResponse> getUserSettings(@RequestBody ProfileRequest profileRequest) {
+		return new ResponseEntity<UserSettingsResponse>(profileService.getUserSettings(profileRequest), HttpStatus.OK);
 	}
 
-	@PostMapping("collectionCenter")
-	public ResponseEntity<CollectionCenterDetailsResponse> getCollectionCenterDetails(
-			@RequestBody ProfileDetailsRequest profileDetailsReques) {
-		return new ResponseEntity<CollectionCenterDetailsResponse>(
-				profileService.getCollectionCenterDetails(profileDetailsReques), 
-				HttpStatus.OK);
+	@PutMapping("userSettings")
+	public ResponseEntity<CommonResponse<String>> updateUserSettings(@RequestBody UserSettingsUpdateRequest userSettingsUpdateRequest) {
+		return new ResponseEntity<CommonResponse<String>>(profileService.updateUserSettings(userSettingsUpdateRequest), HttpStatus.OK);
 	}
 
-	@PutMapping("user/update")
-	public ResponseEntity<CommonResponse<String>> updateUserDetails(
-			@RequestBody UserDetailsUpdateRequset userDetailsUpdateRequset) {
-		return new ResponseEntity<CommonResponse<String>>(profileService.updateUserDetails(userDetailsUpdateRequset),
-				HttpStatus.OK);
+	@PostMapping("collectionCenterSettings")
+	public ResponseEntity<CollectionCenterSettingsResponse> getCollectionCenterSettings(@RequestBody ProfileRequest profileRequest) {
+		return new ResponseEntity<CollectionCenterSettingsResponse>(profileService.getCollectionCenterSettings(profileRequest), HttpStatus.OK);
 	}
 
-	@PutMapping("collectionCenter/updateMore")
-	public ResponseEntity<CommonResponse<String>> updateFullCollectionCenterDetails(
-			@RequestBody CollectionCenterFullDetailsUpdateRequset collectionCenterFullDetailsUpdateRequset) {
-		return new ResponseEntity<CommonResponse<String>>(
-				profileService.updateFullCollectionCenterDetails(collectionCenterFullDetailsUpdateRequset), HttpStatus.OK);
+	@PutMapping("collectionCenterSettings")
+	public ResponseEntity<CommonResponse<String>> updateCollectionCenterSettings(@RequestBody CollectionCenterSettingsUpdateRequset collectionCenterSettingsUpdateRequset) {
+		return new ResponseEntity<CommonResponse<String>>(profileService.updateCollectionCenterSettings(collectionCenterSettingsUpdateRequset), HttpStatus.OK);
 	}
 	
-	@PutMapping("collectionCenter/update")
-	public ResponseEntity<CommonResponse<String>> updateCollectionCenterDetails(
-			@RequestBody CollectionCenterDetailsUpdateRequset collectionCenterDetailsUpdateRequset) {
-		return new ResponseEntity<CommonResponse<String>>(
-				profileService.updateCollectionCenterDetails(collectionCenterDetailsUpdateRequset), HttpStatus.OK);
+	@PostMapping("collectionCenterDetails")
+	public ResponseEntity<CollectionCenterDetailsResponse> getCollectionCenterDetails(@RequestBody ProfileRequest profileRequest) {
+		return new ResponseEntity<CollectionCenterDetailsResponse>(profileService.getCollectionCenterDetails(profileRequest), HttpStatus.OK);
 	}
 	
-	@PutMapping("collectionCenter/addDetail")
-	public ResponseEntity<CommonResponse<String>> addCollectionCenterDetails(
-			@RequestBody CollectionCenterDetailAddRequest collectionCenterDetailAddRequest) {
-		return new ResponseEntity<CommonResponse<String>>(
-				profileService.addCollectionCenterDetails(collectionCenterDetailAddRequest), HttpStatus.OK);
+	@PostMapping("collectionCenterDetails")
+	public ResponseEntity<CollectionCenterDetailsResponse> getCollectionCenterDetails(@RequestBody ProfileRequest profileRequest) {
+		return new ResponseEntity<CollectionCenterDetailsResponse>(profileService.getCollectionCenterDetails(profileRequest), HttpStatus.OK);
 	}
 
 }
