@@ -25,34 +25,32 @@ public class Security extends WebSecurityConfigurerAdapter {
 
 	@Bean
 	public JwtAuthenticationFilter jwtAuthenticationFilter() {
-
 		return new JwtAuthenticationFilter();
 	}
 
 	@Bean(BeanIds.AUTHENTICATION_MANAGER)
 	@Autowired
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-
 		return super.authenticationManagerBean();
 	}
 
 	public void configure(HttpSecurity httpSecurity) throws Exception {
-
 		httpSecurity.cors();
 		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/auth/**").permitAll();
 		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/public/**").permitAll();
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/profile/user/**").permitAll();
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/profile/collectionCenter/**").permitAll();
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/profile/collectionCenter/collectionCenter").permitAll();
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/pickup/dashboard/**").access("hasRole('COLLECTION_CENTER') or hasRole('USER') or hasRole('ADMIN')");
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/pickup/newRequest").access("hasRole('USER') or hasRole('ADMIN')");		
-		
+		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/profile/userSettings/**")
+				.access("hasRole('USER') or hasRole('ADMIN')");
+		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/profile/collectionCenterSettings/**")
+				.access("hasRole('COLLECTION_CENTER') or hasRole('ADMIN')");
+		httpSecurity.csrf().disable().authorizeRequests()
+				.antMatchers("/api/profile/collectionCenter/collectionCenterDetails")
+				.access("hasRole('COLLECTION_CENTER') or hasRole('ADMIN')");
+
 		httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-
 		authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
 	}
 
