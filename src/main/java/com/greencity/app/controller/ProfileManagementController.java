@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.greencity.app.dto.CollectionCenterDetailsResponse;
 import com.greencity.app.dto.CollectionCenterDetailsUpdateRequset;
 import com.greencity.app.dto.CollectionCenterSettingsResponse;
-import com.greencity.app.dto.CollectionCenterSettingsUpdateRequset;
+import com.greencity.app.dto.CollectionCenterSettingsUpdateRequest;
 import com.greencity.app.dto.CommonResponse;
 import com.greencity.app.dto.ProfileRequest;
 import com.greencity.app.dto.UserSettingsResponse;
@@ -42,7 +42,7 @@ public class ProfileManagementController {
 	}
 
 	@PutMapping("collectionCenterSettings")
-	public ResponseEntity<CommonResponse<String>> updateCollectionCenterSettings(@RequestBody CollectionCenterSettingsUpdateRequset collectionCenterSettingsUpdateRequset) {
+	public ResponseEntity<CommonResponse<String>> updateCollectionCenterSettings(@RequestBody CollectionCenterSettingsUpdateRequest collectionCenterSettingsUpdateRequset) {
 		return new ResponseEntity<CommonResponse<String>>(profileService.updateCollectionCenterSettings(collectionCenterSettingsUpdateRequset), HttpStatus.OK);
 	}
 	
@@ -51,9 +51,9 @@ public class ProfileManagementController {
 		return new ResponseEntity<CollectionCenterDetailsResponse>(profileService.getCollectionCenterDetails(profileRequest), HttpStatus.OK);
 	}
 	
-	@PostMapping("collectionCenterDetails")
-	public ResponseEntity<CollectionCenterDetailsResponse> getCollectionCenterDetails(@RequestBody ProfileRequest profileRequest) {
-		return new ResponseEntity<CollectionCenterDetailsResponse>(profileService.getCollectionCenterDetails(profileRequest), HttpStatus.OK);
+	@PutMapping("collectionCenterDetails")
+	public ResponseEntity<CommonResponse<String>> updateCollectionCenterDetails(@RequestBody CollectionCenterDetailsUpdateRequset collectionCenterDetailsUpdateRequest) {
+		return new ResponseEntity<CommonResponse<String>>(profileService.updateCollectionCenterDetails(collectionCenterDetailsUpdateRequest), HttpStatus.OK);
 	}
 
 }

@@ -12,7 +12,7 @@ public class CollectionCenterRegisterRequest {
 	private String centerName;
 	private String password;
 	private String confirmPassword;
-	private int contactNumber;
+	private String contactNumber;
 	private String email;
 	private String addressLine1;
 	private String addressLine2;
@@ -51,11 +51,11 @@ public class CollectionCenterRegisterRequest {
 		this.confirmPassword = confirmPassword;
 	}
 
-	public int getContactNumber() {
+	public String getContactNumber() {
 		return contactNumber;
 	}
 
-	public void setContactNumber(int contactNumber) {
+	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
 

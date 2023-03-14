@@ -1,19 +1,13 @@
 package com.greencity.app.dto;
 
-public class CollectionCenterDetailsResponse {
+public class CollectionCenterSettingsUpdateRequest {
 	private String username;
 	private String centerName;
 	private String contactNumber;
-	private String email;
 	private String addressLine1;
 	private String addressLine2;
 	private String addressLine3;
 	private String location;
-	private String description;
-	private String wasteType;
-	private int payment;
-	private Boolean active;
-	private boolean accountStatus;
 
 	public String getUsername() {
 		return username;
@@ -37,14 +31,6 @@ public class CollectionCenterDetailsResponse {
 
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getAddressLine1() {
@@ -77,46 +63,6 @@ public class CollectionCenterDetailsResponse {
 
 	public void setLocation(String location) {
 		this.location = location;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getWasteType() {
-		return wasteType;
-	}
-
-	public void setWasteType(String wasteType) {
-		this.wasteType = wasteType;
-	}
-
-	public int getPayment() {
-		return payment;
-	}
-
-	public void setPayment(int payment) {
-		this.payment = payment;
-	}
-
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
-	public boolean isAccountStatus() {
-		return accountStatus;
-	}
-
-	public void setAccountStatus(boolean accountStatus) {
-		this.accountStatus = accountStatus;
 	}
 
 }
