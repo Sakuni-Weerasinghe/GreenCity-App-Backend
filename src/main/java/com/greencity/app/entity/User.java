@@ -61,10 +61,10 @@ public class User {
 	@Column
 	private boolean isAdmin;
 	
-	////////////////////////////// Relationships /////////////////////////////////
+	// Relationships 
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-	private List<Customer_Request> request;
+	private List<PickupRequest> request;
 	
 	////////////////////////////////////////////////////////////////////////////
 
@@ -164,11 +164,11 @@ public class User {
 		this.isAdmin = isAdmin;
 	}
 	
-	public List<Customer_Request> getRequest() {
+	public List<PickupRequest> getRequest() {
 		return request;
 	}
 
-	public void setRequest(List<Customer_Request> request) {
+	public void setRequest(List<PickupRequest> request) {
 		this.request = request;
 	}
 

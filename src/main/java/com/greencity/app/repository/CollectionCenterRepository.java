@@ -14,8 +14,6 @@ public interface CollectionCenterRepository extends JpaRepository<CollectionCent
 
 	CollectionCenter findByContactNumber(String contactNumber);
 
-	CollectionCenter findByCenterId(int centerId);
-
 	Page<CollectionCenter> findByActive(boolean active, Pageable pageable);
 
 };
