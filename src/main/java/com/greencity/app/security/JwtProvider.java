@@ -47,6 +47,7 @@ public class JwtProvider {
 		User princlipal = (User) authentication.getPrincipal();
 		Date validity = new Date(new Date().getTime() + 3000000);
 		return Jwts.builder().setSubject(princlipal.getUsername()).claim("authorities", princlipal.getAuthorities())
+				.setExpiration(validity)
 				.signWith(getPrivateKey()).compact();
 	}
 

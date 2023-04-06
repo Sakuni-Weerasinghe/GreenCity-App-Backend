@@ -45,6 +45,10 @@ public class Security extends WebSecurityConfigurerAdapter {
 		httpSecurity.csrf().disable().authorizeRequests()
 				.antMatchers("/api/profile/collectionCenter/collectionCenterDetails")
 				.access("hasRole('COLLECTION_CENTER') or hasRole('ADMIN')");
+		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/pickup/dashboard/**")
+				.access("hasRole('COLLECTION_CENTER') or hasRole('USER') or hasRole('ADMIN')");
+		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/api/pickup/newRequest")
+				.access("hasRole('USER') or hasRole('ADMIN')");
 
 		httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
