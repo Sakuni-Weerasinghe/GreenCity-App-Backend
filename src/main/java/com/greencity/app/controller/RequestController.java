@@ -1,5 +1,7 @@
 package com.greencity.app.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,4 +24,11 @@ public class RequestController {
 			@RequestBody PickupRequestRequest pickupRequestRequest) {
 		return new ResponseEntity<>(requestService.createRequest(pickupRequestRequest),HttpStatus.OK);
 	}
+	
+	@PostMapping("/summaryList")
+	public ResponseEntity<CommonResponse<List<PickupRequestSummaryResponse>>> getSummaryRequestList(
+			@RequestBody SummaryListRequest summaryListRequest) {
+		return new ResponseEntity<>(requestService.getSummaryRequestList(summaryListRequest),HttpStatus.OK);
+	}
+}
 }
