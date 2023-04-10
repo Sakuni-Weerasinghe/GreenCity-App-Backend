@@ -8,19 +8,19 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class LoginResponse {
-	private String authenticationtoken;
+	private String authenticationToken;
 	private String username;
 	private String userRole;
 
 	public LoginResponse() {
 	}
 
-	public String getAuthenticationtoken() {
-		return authenticationtoken;
+	public String getAuthenticationToken() {
+		return authenticationToken;
 	}
 
-	public void setAuthenticationtoken(String authenticationtoken) {
-		this.authenticationtoken = authenticationtoken;
+	public void setAuthenticationToken(String authenticationToken) {
+		this.authenticationToken = authenticationToken;
 	}
 
 	public String getUsername() {
