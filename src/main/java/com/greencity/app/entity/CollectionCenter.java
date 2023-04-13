@@ -67,6 +67,9 @@ public class CollectionCenter {
 	@NotEmpty
 	@Column
 	private boolean accountStatus;
+	
+	
+	// Relationship
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "collectionCenter", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<PickupRequest> requests;

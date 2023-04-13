@@ -9,10 +9,6 @@ public class UserSettingsUpdateRequest {
 	private String addressLine2;
 	private String addressLine3;
 	private String status;
-//	private String password;
-
-	
-
 
 	public String getUsername() {
 		return username;

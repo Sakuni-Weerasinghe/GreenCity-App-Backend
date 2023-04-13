@@ -5,9 +5,6 @@ public class LoginResponse {
 	private String username;
 	private String userRole;
 
-	public LoginResponse() {
-	}
-
 	public String getAuthenticationToken() {
 		return authenticationToken;
 	}

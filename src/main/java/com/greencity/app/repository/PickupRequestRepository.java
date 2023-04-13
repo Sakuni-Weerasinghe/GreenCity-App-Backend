@@ -12,12 +12,6 @@ public interface PickupRequestRepository extends JpaRepository<PickupRequest, In
 
 	PickupRequest findByRequestId(int requestId);
 
-	// List<Customer_Request> findByCustomerAndOrderStatus(User user, String
-	// requestStatus);
-	//
-	// List<Customer_Request> findByCollectionCenterUsernameAndOrderStatus(String
-	// collectionCenterName, String requestStatus);
-
 	void deleteByRequestId(int requestId);
 
 	List<PickupRequest> findByCollectionCenter(CollectionCenter collectionCenter);
