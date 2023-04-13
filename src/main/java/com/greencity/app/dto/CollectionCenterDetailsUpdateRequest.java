@@ -2,7 +2,7 @@ package com.greencity.app.dto;
 
 import java.util.List;
 
-public class CollectionCenterDetailsUpdateRequset {
+public class CollectionCenterDetailsUpdateRequest {
 	private String username;
 	private String wasteType;
 	private int payment;

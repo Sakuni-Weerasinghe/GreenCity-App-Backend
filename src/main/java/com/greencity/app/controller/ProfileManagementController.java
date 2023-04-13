@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.greencity.app.dto.CollectionCenterDetailsResponse;
-import com.greencity.app.dto.CollectionCenterDetailsUpdateRequset;
+import com.greencity.app.dto.CollectionCenterDetailsUpdateRequest;
 import com.greencity.app.dto.CollectionCenterSettingsResponse;
 import com.greencity.app.dto.CollectionCenterSettingsUpdateRequest;
 import com.greencity.app.dto.CommonResponse;
@@ -52,7 +52,7 @@ public class ProfileManagementController {
 	}
 	
 	@PutMapping("collectionCenterDetails")
-	public ResponseEntity<CommonResponse<String>> updateCollectionCenterDetails(@RequestBody CollectionCenterDetailsUpdateRequset collectionCenterDetailsUpdateRequest) {
+	public ResponseEntity<CommonResponse<String>> updateCollectionCenterDetails(@RequestBody CollectionCenterDetailsUpdateRequest collectionCenterDetailsUpdateRequest) {
 		return new ResponseEntity<CommonResponse<String>>(profileService.updateCollectionCenterDetails(collectionCenterDetailsUpdateRequest), HttpStatus.OK);
 	}
 

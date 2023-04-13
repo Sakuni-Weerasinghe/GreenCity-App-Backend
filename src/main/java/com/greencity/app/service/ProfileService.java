@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.greencity.app.dto.CollectionCenterDetailsResponse;
-import com.greencity.app.dto.CollectionCenterDetailsUpdateRequset;
+import com.greencity.app.dto.CollectionCenterDetailsUpdateRequest;
 import com.greencity.app.dto.CollectionCenterSettingsResponse;
 import com.greencity.app.dto.CollectionCenterSettingsUpdateRequest;
 import com.greencity.app.dto.CommonResponse;
@@ -160,7 +160,7 @@ public class ProfileService {
 
 	// This function is used to update collection center details
 	public CommonResponse<String> updateCollectionCenterDetails(
-			CollectionCenterDetailsUpdateRequset collectionCenterDetailsUpdateRequest) {
+			CollectionCenterDetailsUpdateRequest collectionCenterDetailsUpdateRequest) {
 		if (collectionCenterDetailsUpdateRequest != null) {
 			CollectionCenter collectionCenter = collectionCenterRepository
 					.findByUsername(collectionCenterDetailsUpdateRequest.getUsername());
